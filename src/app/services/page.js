@@ -1,7 +1,11 @@
-export default function Services() {
+import Brands from "@/components/brands";
+import Services from "@/components/services";
+
+export default function ServicesPage() {
   return (
     <>
-      <p>This is the services page</p>
+      <Services />
+      <Brands />
     </>
   );
 }

@@ -1,7 +1,10 @@
-export default function Testimonials() {
+import Brands from "@/components/brands";
+import Testimonials from "@/components/testimonials";
+export default function TestimonialsPage() {
   return (
     <>
-      <p>This is the testimonials page</p>
+      <Testimonials />
+      <Brands />
     </>
   );
 }

@@ -1,7 +1,13 @@
-export default function Team() {
+import Brands from "@/components/brands";
+import Contacts from "@/components/contacts";
+import Team from "@/components/team";
+
+export default function TeamPage() {
   return (
     <>
-      <p>This is the team page</p>
+      <Team />
+      <Contacts />
+      <Brands />
     </>
-  );
+  )
 }
