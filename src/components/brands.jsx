@@ -1,4 +1,10 @@
-export default function Brands() {
+import brandList from "@/lib/apiRequest/brandList";
+import Link from "next/link";
+import Image from "next/image";
+
+export default async function Brands() {
+  const brands = await brandList();
+
   return (
     <section className='py-20'>
       <div className='container mx-auto px-4 text-center'>
@@ -6,16 +12,26 @@ export default function Brands() {
           Trusted by brands all over the world
         </h3>
         <div className='flex flex-wrap -mx-2'>
-          <div className='mb-12 lg:mb-0 w-full md:w-1/2 lg:w-1/4 px-2'>
-            <a href='#'>
-              <img
-                className='mx-auto h-8'
-                src='atis-assets/logo/brands/slack.png'
-                alt=''
-              />
-            </a>
-          </div>
-          <div className='mb-12 lg:mb-0 w-full md:w-1/2 lg:w-1/4 px-2'>
+          {brands.map((brand) => {
+            return (
+              <div
+                key={brand.id}
+                className='mb-12 lg:mb-0 w-full md:w-1/2 lg:w-1/4 px-2'
+              >
+                <Link href='#'>
+                  <Image
+                    className='mx-auto h-8'
+                    width={100}
+                    height={40}
+                    src={brand.image}
+                    alt={brand.name}
+                  />
+                </Link>
+              </div>
+            );
+          })}
+
+          {/* <div className='mb-12 lg:mb-0 w-full md:w-1/2 lg:w-1/4 px-2'>
             <a href='#'>
               <img
                 className='mx-auto h-8'
@@ -41,7 +57,7 @@ export default function Brands() {
                 alt=''
               />
             </a>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
