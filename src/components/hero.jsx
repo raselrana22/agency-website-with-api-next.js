@@ -1,6 +1,10 @@
 import Link from "next/link";
+import Image from "next/image";
+import heroList from "@/lib/apiRequest/heroList";
 
-export default function Hero() {
+export default async function Hero() {
+  const heros = await heroList();
+
   return (
     <div>
       <section className='relative bg-gray-50'>
@@ -17,8 +21,7 @@ export default function Hero() {
                   </div>
                   <div className='max-w-sm mx-auto lg:mx-0'>
                     <p className='mb-6 text-gray-400 leading-loose'>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Pellentesque efficitur nisl sodales egestas lobortis.
+                      {heros.description}
                     </p>
                     <div>
                       <Link
@@ -37,28 +40,29 @@ export default function Hero() {
                   </div>
                 </div>
               </div>
+
               <div className='w-full lg:w-1/2 px-4'>
                 <div className='flex flex-wrap lg:mb-4 lg:ml-6'>
                   <img
                     className='w-full md:w-1/2 lg:w-1/3 h-64 p-2 object-cover rounded-4xl lg:rounded-br-none'
-                    src='images/Screenshot-2.png'
+                    src={heros["image1"]}
                     alt=''
                   />
                   <img
                     className='w-full md:w-1/2 lg:w-2/3 h-64 p-2 object-cover rounded-4xl lg:rounded-bl-none'
-                    src='images/hub-01-18-projectmanagement-Hero-1200x900-software-tips.jpg'
+                    src={heros["image2"]}
                     alt=''
                   />
                 </div>
                 <div className='flex flex-wrap lg:mb-4 lg:mr-6'>
                   <img
                     className='w-full md:w-1/2 lg:w-2/3 h-64 p-2 object-cover rounded-4xl lg:rounded-br-none'
-                    src='images/istockphoto-1017296544-170667a.jpg'
+                    src={heros["image3"]}
                     alt=''
                   />
                   <img
                     className='w-full md:w-1/2 lg:w-1/3 h-64 p-2 object-cover rounded-4xl lg:rounded-bl-none'
-                    src='images/Screenshot-3.png'
+                    src={heros["image4"]}
                     alt=''
                   />
                 </div>

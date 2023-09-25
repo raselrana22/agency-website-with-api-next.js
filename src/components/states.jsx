@@ -1,4 +1,9 @@
-export default function Stats() {
+import stateList from "@/lib/apiRequest/stateList";
+
+export default async function Stats() {
+  const states = await stateList();
+  console.log(states);
+
   return (
     <section className='py-20'>
       <div className='container mx-auto px-4'>
@@ -15,7 +20,7 @@ export default function Stats() {
               </svg>
             </span>
             <h3 className='text-2xl font-bold'>250 324</h3>
-            <p className='text-gray-500'>Followers</p>
+            <p className='text-gray-500'>{states.followers}</p>
           </div>
           <div className='mb-8 w-full md:w-1/2 lg:w-1/4 text-center'>
             <span className='mb-6 inline-block p-4 rounded bg-green-100'>
@@ -35,7 +40,7 @@ export default function Stats() {
               </svg>
             </span>
             <h3 className='text-2xl font-bold'>6 510</h3>
-            <p className='text-gray-500'>Solved Problems</p>
+            <p className='text-gray-500'>{states.solved}</p>
           </div>
           <div className='mb-8 w-full md:w-1/2 lg:w-1/4 text-center'>
             <span className='mb-6 inline-block p-4 rounded bg-green-100'>
@@ -54,7 +59,7 @@ export default function Stats() {
                 />
               </svg>
             </span>
-            <h3 className='text-2xl font-bold'>14 350</h3>
+            <h3 className='text-2xl font-bold'>{states.customers}</h3>
             <p className='text-gray-500'>Happy Customers</p>
           </div>
           <div className='mb-8 w-full md:w-1/2 lg:w-1/4 text-center'>
@@ -73,7 +78,7 @@ export default function Stats() {
                 <path d='M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z' />
               </svg>
             </span>
-            <h3 className='text-2xl font-bold'>149 324</h3>
+            <h3 className='text-2xl font-bold'>{states.projects}</h3>
             <p className='text-gray-500'>Projects</p>
           </div>
         </div>
